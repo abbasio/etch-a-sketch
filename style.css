@@ -17,4 +17,14 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    width: 500px;
+}
+
+#color-picker{
+    margin-left: 10px;
+}
+
+#reset {
+    margin-left: 10px;
 }

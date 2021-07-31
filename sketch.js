@@ -3,6 +3,8 @@
 const grid = document.querySelector('#container');
 const slider = document.querySelector("#slider");
 const output = document.querySelector("#dim");
+const colorPick = document.querySelector('#color-picker');
+colorPick.value = "#000000";
 slider.value = 16;
 output.textContent = `${slider.value} x ${slider.value}`;
 
@@ -13,8 +15,7 @@ makeGrid();
 
 slider.oninput = function () {
     output.textContent = `${slider.value} x ${slider.value}`;
-    grid.innerHTML="";
-    makeGrid();
+    resetGrid();
 }
 
 
@@ -34,10 +35,16 @@ function makeGrid() {
 
 }
 
+function resetGrid() {
+    grid.innerHTML = "";
+    makeGrid();
+}
+
 //---------DRAW ON GRID
 
 function drawColor(e){
-    e.target.style.backgroundColor = ("black");
+    let color = colorPick.value;
+    e.target.style.backgroundColor = (color);
 }
 
 
