@@ -28,3 +28,27 @@ h1 {
 #reset {
     margin-left: 10px;
 }
+
+footer {
+    background-color: gainsboro;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#github {
+    margin-left: 10px;
+}
+
+#github:hover{
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 0 black; 
+    border-radius: 50%;
+}
