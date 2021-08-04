@@ -27,10 +27,9 @@ function makeGrid() {
     grid.style.gridTemplateColumns = `repeat(${gridSize}, auto)`;
 
     for (let i = 0; i < (gridSize * gridSize); i++){
-        const addGrid = document.createElement('div');
-        addGrid.addEventListener('mouseover', drawColor);
-        addGrid.classList.add('cell');
-        grid.appendChild(addGrid);
+        const gridCell = document.createElement('div');
+        gridCell.addEventListener('mouseover', drawColor);
+        grid.appendChild(gridCell);
     }
 
 }
@@ -51,18 +50,39 @@ function resetGrid() {
 
 
 function draw() {
+    if (!drawButton.classList.contains("active")) {
+        drawButton.classList.add("active");
+    }
+    if (rainbowButton.classList.contains("active") || (eraserButton.classList.contains("active"))) {
+        rainbowButton.classList.remove("active");
+        eraserButton.classList.remove("active");
+    }
     drawMode = true;
     rainbowMode = false;
     eraserMode = false;
 }
 
 function rainbow() {
+    if (!rainbowButton.classList.contains("active")) {
+        rainbowButton.classList.add("active");
+    }
+    if (drawButton.classList.contains("active") || (eraserButton.classList.contains("active"))) {
+        drawButton.classList.remove("active");
+        eraserButton.classList.remove("active");
+    }
     drawMode = false;
     rainbowMode = true;
     eraserMode = false;
 }
 
 function eraser(){
+    if (!eraserButton.classList.contains("active")) {
+        eraserButton.classList.add("active");
+    }
+    if (drawButton.classList.contains("active") || (rainbowButton.classList.contains("active"))) {
+        drawButton.classList.remove("active");
+        rainbowButton.classList.remove("active");
+    }
     drawMode = false;
     rainbowMode = false;
     eraserMode = true;
@@ -72,18 +92,13 @@ drawButton.addEventListener ("click", draw);
 rainbowButton.addEventListener("click", rainbow);
 eraserButton.addEventListener("click", eraser);
 
-
-//---------RANDOM COLOR SELECTOR
-
-let random1 = Math.floor(Math.random() * 256);
-let random2 = Math.floor(Math.random() * 256);
-let random3 = Math.floor(Math.random() * 256);
-
-
 //---------DRAW
 
 function drawColor(e){
-    let color = colorPick.value;
+    let color = colorPick.value; 
+    let random1 = Math.floor(Math.random() * 256);
+    let random2 = Math.floor(Math.random() * 256);
+    let random3 = Math.floor(Math.random() * 256);
 
     if (drawMode) {
         e.target.style.backgroundColor = (color);
